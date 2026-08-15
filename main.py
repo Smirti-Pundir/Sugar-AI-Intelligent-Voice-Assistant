@@ -103,8 +103,8 @@ if __name__ == "__main__":
         try:
             with sr.Microphone() as source:
                 print(Fore.GREEN + "🎧 Listening...")
-                r.adjust_for_ambient_noise(source, duration=0.5)
-                audio = r.listen(source, timeout=2, phrase_time_limit=1)
+                r.adjust_for_ambient_noise(source, duration=1)
+                audio = r.listen(source, timeout=3, phrase_time_limit=5)
             word = r.recognize_google(audio)
             if "sugar" in word.lower():
                 print(Fore.YELLOW + "Before Speak")
@@ -113,7 +113,7 @@ if __name__ == "__main__":
                 # Listen for command
                 with sr.Microphone() as source:
                     print(Fore.RED + "🤖 Sugar Active...")
-                    audio = r.listen(source)
+                    audio = r.listen(source )
                     command = r.recognize_google(audio)
                     print(Fore.MAGENTA + f"🗣️ Command: {command}")
 
